@@ -27,6 +27,7 @@ jobs:
         flake8 ./python --count --select=E9,F63,F7,F82 --show-source --statistics --exclude=.git,__pycache__,docs/source/conf.py,old,build,dist,venv,test/resources,.eggs,review.egg-info,.pytest_cache,node_modules
         # TODO: add a step with flake8 linting
         
-    - name: Test with pytest
-      run: |
-        pytest
+# TODO: uncomment after creating tests
+#     - name: Test with pytest
+#       run: |
+#         pytest python
