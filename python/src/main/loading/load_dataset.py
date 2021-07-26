@@ -34,9 +34,14 @@ def main():
         create_directory(project_directory_tmp)
         directory_to_clone = project_directory_name if args.allowed_extensions is None else project_directory_name_tmp
 
-        p = subprocess.Popen(
-            ['git', 'clone', f'https://github.com/{project}.git', directory_to_clone, '--depth', '1'],
-            cwd=args.output)
+        if args.depth != -1:
+            p = subprocess.Popen(
+                ['git', 'clone', f'https://github.com/{project}.git', directory_to_clone, '--depth', str(args.depth)],
+                cwd=args.output)
+        else:
+            p = subprocess.Popen(
+                ['git', 'clone', f'https://github.com/{project}.git', directory_to_clone],
+                cwd=args.output)
         return_code = p.wait()
         if return_code != 0:
             logging.info(f'Error while cloning {project}, skipping..')
@@ -50,7 +55,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument('csv_path', metavar='csv-path', help='Path to csv file with github repositories data')
     parser.add_argument('output', help='Output directory')
     parser.add_argument('--allowed-extensions', help=' optional Allowed file extensions', nargs='+')
-    parser.add_argument('--start-from', help='Index of repository to start from', nargs='?', const=0, type=int)
+    parser.add_argument('--start-from', help='Index of repository to start from', nargs='?', default=0, type=int)
+    parser.add_argument('--depth', help='Depth of git history to load', nargs='?', default=-1, type=int)
     return parser.parse_args()
 
 
