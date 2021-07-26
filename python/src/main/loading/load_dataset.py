@@ -15,8 +15,8 @@ import subprocess
 import argparse
 import os
 
-from python.src.main.processing.filter_dataset import filter_files
-from python.src.main.utils.file_utils import create_directory
+from src.main.processing.filter_dataset import filter_files
+from src.main.utils.file_utils import create_directory
 
 
 def main():
