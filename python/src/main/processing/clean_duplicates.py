@@ -21,7 +21,7 @@ import logging
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 
-from python.src.main.utils.file_utils import create_directory
+from src.main.utils.file_utils import create_directory
 
 
 def main():
