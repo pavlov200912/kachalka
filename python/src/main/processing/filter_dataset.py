@@ -14,7 +14,7 @@ import os
 from shutil import copy
 from typing import List
 
-from python.src.main.utils.file_utils import create_directory
+from src.main.utils.file_utils import create_directory
 
 
 def main():
